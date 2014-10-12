@@ -1,16 +1,16 @@
 package java.io;
 
 public abstract class OutputStream implements Closeable, Flushable {
-    // ½«×Ö½ÚbĞ´Èëµ½¡°Êä³öÁ÷¡±ÖĞ¡£
-    // ËüÔÚ×ÓÀàÖĞÊµÏÖ,¶àÎªnative ·½·¨
+    // å°†å­—èŠ‚bå†™å…¥åˆ°â€œè¾“å‡ºæµâ€ä¸­ã€‚
+    // å®ƒåœ¨å­ç±»ä¸­å®ç°,å¤šä¸ºnative æ–¹æ³•
     public abstract void write(int b) throws IOException;
 
-    // Ğ´Èë×Ö½ÚÊı×ébµ½¡°×Ö½ÚÊı×éÊä³öÁ÷¡±ÖĞ¡£
+    // å†™å…¥å­—èŠ‚æ•°ç»„båˆ°â€œå­—èŠ‚æ•°ç»„è¾“å‡ºæµâ€ä¸­ã€‚
     public void write(byte b[]) throws IOException {
         write(b, 0, b.length);
     }
 
-    // Ğ´Èë×Ö½ÚÊı×ébµ½¡°×Ö½ÚÊı×éÊä³öÁ÷¡±ÖĞ£¬²¢ÇÒoffÊÇ¡°Êı×ébµÄÆğÊ¼Î»ÖÃ¡±£¬lenÊÇĞ´ÈëµÄ³¤¶È
+    // å†™å…¥å­—èŠ‚æ•°ç»„båˆ°â€œå­—èŠ‚æ•°ç»„è¾“å‡ºæµâ€ä¸­ï¼Œå¹¶ä¸”offæ˜¯â€œæ•°ç»„bçš„èµ·å§‹ä½ç½®â€ï¼Œlenæ˜¯å†™å…¥çš„é•¿åº¦
     public void write(byte b[], int off, int len) throws IOException {
         if (b == null) {
             throw new NullPointerException();

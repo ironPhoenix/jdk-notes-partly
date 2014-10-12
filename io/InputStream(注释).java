@@ -2,18 +2,18 @@ package java.io;
 
 public abstract class InputStream implements Closeable {
 
-    // Ã¿Ò»´Î×î´óÄÜskipµÄ´óÐ¡
+    // æ¯ä¸€æ¬¡æœ€å¤§èƒ½skipçš„å¤§å°
     private static final int MAX_SKIP_BUFFER_SIZE = 2048;
 
-    // ´ÓÊäÈëÁ÷ÖÐ¶ÁÈ¡Êý¾ÝµÄÏÂÒ»¸ö×Ö½Ú¡£
+    // ä»Žè¾“å…¥æµä¸­è¯»å–æ•°æ®çš„ä¸‹ä¸€ä¸ªå­—èŠ‚ã€‚
     public abstract int read() throws IOException;
 
-    // ½«Êý¾Ý´ÓÊäÈëÁ÷¶ÁÈë byte Êý×é¡£
+    // å°†æ•°æ®ä»Žè¾“å…¥æµè¯»å…¥ byte æ•°ç»„ã€‚
     public int read(byte b[]) throws IOException {
         return read(b, 0, b.length);
     }
 
-    // ½«×î¶à len ¸öÊý¾Ý×Ö½Ú´Ó´ËÊäÈëÁ÷¶ÁÈë byte Êý×é¡£
+    // å°†æœ€å¤š len ä¸ªæ•°æ®å­—èŠ‚ä»Žæ­¤è¾“å…¥æµè¯»å…¥ byte æ•°ç»„ã€‚
     public int read(byte b[], int off, int len) throws IOException {
         if (b == null) {
             throw new NullPointerException();
@@ -43,8 +43,8 @@ public abstract class InputStream implements Closeable {
         return i;
     }
 
-    // Ìø¹ýÊäÈëÁ÷ÖÐµÄn¸ö×Ö½Ú
-	// ÆäÊµ¾ÍÊÇ¶Á³öÀ´ ÈÓµô
+    // è·³è¿‡è¾“å…¥æµä¸­çš„nä¸ªå­—èŠ‚
+	// å…¶å®žå°±æ˜¯è¯»å‡ºæ¥ æ‰”æŽ‰
     public long skip(long n) throws IOException {
 
         long remaining = n;
@@ -54,7 +54,7 @@ public abstract class InputStream implements Closeable {
             return 0;
         }
 		
-		//±È×î´óÄÜÌø·¶Î§´ó ¾Í·Ö´ÎÈÓ
+		//æ¯”æœ€å¤§èƒ½è·³èŒƒå›´å¤§ å°±åˆ†æ¬¡æ‰”
         int size = (int)Math.min(MAX_SKIP_BUFFER_SIZE, remaining);
         byte[] skipBuffer = new byte[size];
         while (remaining > 0) {
